@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "33727401132",
+    "firebase_url": "https://unet-e20dc.firebaseio.com",
+    "project_id": "unet-e20dc",
+    "storage_bucket": "unet-e20dc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:33727401132:android:c5c721e9a85e2410d4a309",
+        "android_client_info": {
+          "package_name": "com.example.test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "33727401132-2djg1jpavmri4pmkajso4q7m1m7jt8uc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.test",
+            "certificate_hash": "2a979688a94afd921a5a9286579f9789a02e89d3"
+          }
+        },
+        {
+          "client_id": "33727401132-f2jc3db99r2vmec5g82c8blnah8lar3i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2VTsmHQTOa7RPAG0u0TbbfKaS3z6NkA8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "33727401132-f2jc3db99r2vmec5g82c8blnah8lar3i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
