@@ -8,32 +8,63 @@
     tools:context=".DefaultActivity">
 
     <RelativeLayout
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp">
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="0dp">
 
         <TextView
             android:id="@+id/profileName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:fontFamily="@font/bungee"
             android:text="Unet"
             android:textColor="@android:color/black"
-            android:textSize="24sp" />
-
-        <com.mikhaellopez.circularimageview.CircularImageView
-            android:id="@+id/profilePciture"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/ic_profile"
-            android:tint="#efefef"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            app:civ_circle_color="#fafafa"/>
+            android:textSize="24sp"
+            android:layout_centerHorizontal="true"/>
 
     </RelativeLayout>
+
+    <co.ceryle.segmentedbutton.SegmentedButtonGroup
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:id="@+id/tabs"
+        android:layout_below="@id/toolbar"
+        android:layout_centerHorizontal="true"
+        app:sbg_animateSelector="fastOutSlowIn"
+        app:sbg_animateSelectorDuration="250"
+        app:sbg_backgroundColor="@android:color/white"
+        app:sbg_dividerPadding="5dp"
+        app:sbg_dividerRadius="100dp"
+        app:sbg_dividerSize="1dp"
+        app:sbg_position="1"
+        app:sbg_radius="2dp"
+        app:sbg_rippleColor="@android:color/black"
+        app:sbg_selectorColor="@android:color/black"
+        app:sbg_selectorTextColor="@android:color/white"
+        app:sbg_shadow="true"
+        app:sbg_shadowElevation="3dp"
+        app:sbg_shadowMargin="4dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/grey_button"
+            android:text="Home"
+            android:textColor="@android:color/black"
+            android:textAllCaps="false" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:text="Map"
+            android:textColor="@android:color/black"
+            android:textAllCaps="false"/>
+
+
+    </co.ceryle.segmentedbutton.SegmentedButtonGroup>
 
     <View
         android:layout_width="match_parent"
@@ -52,7 +83,7 @@
         android:padding="8dp">
 
         <LinearLayout
-            android:id="@+id/homeBtn"
+            android:id="@+id/feedBtn"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -62,14 +93,14 @@
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/ic_home"
+                android:src="@drawable/ic_feed"
                 android:tint="#262626" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/raleway_bold"
-                android:text="Home"
+                android:text="Feed"
                 android:textColor="@android:color/black"
                 android:textSize="12sp" />
 
@@ -108,23 +139,16 @@
             android:gravity="center">
 
             <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@drawable/ic_map"
-                android:tint="#777777" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/raleway_bold"
-                android:text="Map"
-                android:textColor="#777777"
-                android:textSize="10sp" />
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_add"
+                android:tint="#2f89fc"
+                android:layout_gravity="center"/>
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/gamesBtn"
+            android:id="@+id/activityBtn"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -134,38 +158,42 @@
             <ImageView
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:src="@drawable/ic_games"
+                android:src="@drawable/ic_activity"
                 android:tint="#777777" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/raleway_bold"
-                android:text="Games"
+                android:text="Activity"
                 android:textColor="#777777"
                 android:textSize="10sp" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/chatsBtn"
+            android:id="@+id/profileBtn"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center">
 
-            <ImageView
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/profilePciture"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:src="@drawable/ic_chat"
-                android:tint="#777777" />
+                android:src="@drawable/ic_profile"
+                android:tint="#ffffff"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                app:civ_circle_color="#777777"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/raleway_bold"
-                android:text="Chats"
+                android:text="Profile"
                 android:textColor="#777777"
                 android:textSize="10sp" />
 
