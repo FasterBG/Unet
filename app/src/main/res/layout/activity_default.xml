@@ -12,61 +12,101 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:layout_marginBottom="0dp">
+        android:paddingBottom="0dp">
+
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_plus"
+            android:background="@null"
+            android:tint="#2f89fc"
+            android:layout_marginStart="10dp" />
 
         <TextView
             android:id="@+id/profileName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:fontFamily="@font/bungee"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/jockey_one"
+            android:paddingBottom="10dp"
             android:text="Unet"
             android:textColor="@android:color/black"
-            android:textSize="24sp"
-            android:layout_centerHorizontal="true"/>
+            android:textSize="24sp" />
+
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_chats"
+            android:background="@null"
+            android:tint="@android:color/black"
+            android:layout_marginEnd="10dp" />
 
     </RelativeLayout>
 
-    <co.ceryle.segmentedbutton.SegmentedButtonGroup
-        android:layout_width="200dp"
-        android:layout_height="40dp"
-        android:id="@+id/tabs"
+    <RelativeLayout
+        android:id="@+id/stories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/toolbar"
-        android:layout_centerHorizontal="true"
-        app:sbg_animateSelector="fastOutSlowIn"
-        app:sbg_animateSelectorDuration="250"
-        app:sbg_backgroundColor="@android:color/white"
-        app:sbg_dividerPadding="5dp"
-        app:sbg_dividerRadius="100dp"
-        app:sbg_dividerSize="1dp"
-        app:sbg_position="1"
-        app:sbg_radius="2dp"
-        app:sbg_rippleColor="@android:color/black"
-        app:sbg_selectorColor="@android:color/black"
-        app:sbg_selectorTextColor="@android:color/white"
-        app:sbg_shadow="true"
-        app:sbg_shadowElevation="3dp"
-        app:sbg_shadowMargin="4dp">
+        android:background="#fafafa">
 
-        <Button
+        <TextView
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/grey_button"
-            android:text="Home"
+            android:fontFamily="@font/oxygen_bold"
+            android:layout_margin="15dp"
+            android:text="Stories"
             android:textColor="@android:color/black"
-            android:textAllCaps="false" />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:text="Map"
-            android:textColor="@android:color/black"
-            android:textAllCaps="false"/>
+            android:textSize="24sp" />
 
 
-    </co.ceryle.segmentedbutton.SegmentedButtonGroup>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/stories"
+        android:layout_above="@id/bottomNavigationDivider">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#fafafa"
+                    android:layout_marginTop="10dp"/>
+
+                <include layout="@layout/post_layout" android:id="@+id/postLayout"
+                    android:layout_below="@id/divider"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"/>
+
+                <include layout="@layout/post_layout" android:id="@+id/postLayout2"
+                    android:layout_below="@id/postLayout"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"/>
+
+            </RelativeLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
 
     <View
+        android:id="@+id/bottomNavigationDivider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#fafafa"
@@ -80,7 +120,8 @@
         android:gravity="center"
         android:weightSum="5"
         android:layout_alignParentBottom="true"
-        android:padding="8dp">
+        android:padding="8dp"
+        android:background="@android:color/white">
 
         <LinearLayout
             android:id="@+id/feedBtn"
@@ -99,7 +140,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/raleway_bold"
+                android:fontFamily="@font/oxygen_bold"
                 android:text="Feed"
                 android:textColor="@android:color/black"
                 android:textSize="12sp" />
@@ -123,7 +164,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/raleway_bold"
+                android:fontFamily="@font/oxygen_bold"
                 android:text="Discover"
                 android:textColor="#777777"
                 android:textSize="10sp" />

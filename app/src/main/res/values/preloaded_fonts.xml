@@ -2,7 +2,11 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/bungee</item>
+        <item>@font/jockey_one</item>
         <item>@font/muli</item>
+        <item>@font/oxygen</item>
+        <item>@font/oxygen_bold</item>
+        <item>@font/pt_sans_bold</item>
         <item>@font/quicksand_bold</item>
         <item>@font/raleway</item>
         <item>@font/raleway_bold</item>
