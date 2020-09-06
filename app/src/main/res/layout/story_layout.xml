@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+
+    <ImageButton
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:id="@+id/moreBtn"
+        android:src="@drawable/ic_more"
+        android:tint="@android:color/white"
+        android:background="@null"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentEnd="true"/>
+
+    <ImageButton
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:src="@drawable/ic_chat"
+        android:background="@null"
+        android:layout_toStartOf="@id/moreBtn"
+        android:layout_marginTop="10dp"/>
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        >
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:id="@+id/profilePicture"
+            android:src="@drawable/google"/>
+
+        <TextView
+            android:id="@+id/descriptionNickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="selokravino"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/oxygen_bold"
+            android:layout_marginStart="10dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/profilePicture"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
