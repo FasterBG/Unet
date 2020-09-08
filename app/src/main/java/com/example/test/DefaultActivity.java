@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -28,7 +29,7 @@ public class DefaultActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
     private CircularImageView profilePicture;
-    private ImageButton addContentBtn;
+    private ImageView addContentBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,14 +39,18 @@ public class DefaultActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
 
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new FragmentMap()).commit();
+
         profilePicture = findViewById(R.id.profilePciture);
         addContentBtn = findViewById(R.id.addContentBtn);
 
         profilePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /*
                 Intent toProfileActivity = new Intent(DefaultActivity.this, ProfileActivity.class);
                 startActivity(toProfileActivity);
+                 */
             }
         });
 

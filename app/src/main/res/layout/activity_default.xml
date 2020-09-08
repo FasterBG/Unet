@@ -12,99 +12,39 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:paddingBottom="0dp">
-
-        <ImageButton
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:id="@+id/addContentBtn"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/ic_plus"
-            android:background="@null"
-            android:tint="#2f89fc"
-            android:layout_marginStart="10dp" />
+        android:layout_marginBottom="15dp">
 
         <TextView
             android:id="@+id/profileName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:fontFamily="@font/jockey_one"
-            android:paddingBottom="10dp"
-            android:text="Unet"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Mapick"
             android:textColor="@android:color/black"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:layout_centerVertical="true" />
 
         <ImageButton
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/ic_chats"
+            android:src="@drawable/ic_people"
             android:background="@null"
             android:tint="@android:color/black"
-            android:layout_marginEnd="10dp" />
+            android:layout_marginEnd="10dp"
+            android:scaleType="fitXY"
+            android:layout_marginBottom="10dp"/>
 
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/stories"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar"
-        android:background="#fafafa">
-
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/oxygen_bold"
-            android:layout_margin="15dp"
-            android:text="Stories"
-            android:textColor="@android:color/black"
-            android:textSize="24sp" />
-
-
-
-    </RelativeLayout>
-
-    <RelativeLayout
+    <FrameLayout
+        android:id="@+id/fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/stories"
-        android:layout_above="@id/bottomNavigationDivider">
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <View
-                    android:id="@+id/divider"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#fafafa"
-                    android:layout_marginTop="10dp"/>
-
-                <include layout="@layout/post_layout" android:id="@+id/postLayout"
-                    android:layout_below="@id/divider"
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"/>
-
-                <include layout="@layout/post_layout" android:id="@+id/postLayout2"
-                    android:layout_below="@id/postLayout"
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"/>
-
-            </RelativeLayout>
-
-        </ScrollView>
-
-    </RelativeLayout>
+        android:layout_below="@id/toolbar"
+        android:layout_above="@id/bottomNavigationDivider" />
 
     <View
         android:id="@+id/bottomNavigationDivider"
@@ -125,6 +65,23 @@
         android:background="@android:color/white">
 
         <LinearLayout
+            android:id="@+id/discoverBtn"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_map"
+                android:tint="#262626" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/feedBtn"
             android:layout_weight="1"
             android:layout_width="0dp"
@@ -136,39 +93,8 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/ic_feed"
-                android:tint="#262626" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/oxygen_bold"
-                android:text="Feed"
-                android:textColor="@android:color/black"
-                android:textSize="12sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/discoverBtn"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@drawable/ic_search"
                 android:tint="#777777" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/oxygen_bold"
-                android:text="Discover"
-                android:textColor="#777777"
-                android:textSize="10sp" />
 
         </LinearLayout>
 
@@ -181,11 +107,12 @@
             android:gravity="center">
 
             <ImageView
+                android:id="@+id/addContentBtn"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/ic_add"
-                android:tint="#2f89fc"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:src="@drawable/ic_addcontentbtn"
+                android:scaleType="fitXY" />
 
         </LinearLayout>
 
@@ -198,18 +125,11 @@
             android:gravity="center">
 
             <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:src="@drawable/ic_activity"
                 android:tint="#777777" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/raleway_bold"
-                android:text="Activity"
-                android:textColor="#777777"
-                android:textSize="10sp" />
 
         </LinearLayout>
 
@@ -223,21 +143,12 @@
 
             <com.mikhaellopez.circularimageview.CircularImageView
                 android:id="@+id/profilePciture"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:src="@drawable/ic_profile"
                 android:tint="#ffffff"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
                 app:civ_circle_color="#777777"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/raleway_bold"
-                android:text="Profile"
-                android:textColor="#777777"
-                android:textSize="10sp" />
 
         </LinearLayout>
 

@@ -4,11 +4,14 @@
         <item>@font/bungee</item>
         <item>@font/jockey_one</item>
         <item>@font/muli</item>
+        <item>@font/open_sans_bold</item>
         <item>@font/oxygen</item>
         <item>@font/oxygen_bold</item>
+        <item>@font/poppins_bold</item>
         <item>@font/pt_sans_bold</item>
         <item>@font/quicksand_bold</item>
         <item>@font/raleway</item>
         <item>@font/raleway_bold</item>
+        <item>@font/roboto_bold</item>
     </array>
 </resources>
