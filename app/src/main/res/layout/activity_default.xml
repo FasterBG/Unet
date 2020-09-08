@@ -26,6 +26,7 @@
             android:layout_centerVertical="true" />
 
         <ImageButton
+            android:id="@+id/talksBtn"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_alignParentEnd="true"
@@ -148,7 +149,6 @@
                 android:src="@drawable/ic_profile"
                 android:tint="#ffffff"
                 app:civ_circle_color="#777777"/>
-
 
         </LinearLayout>
 

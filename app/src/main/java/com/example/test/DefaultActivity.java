@@ -30,6 +30,7 @@ public class DefaultActivity extends AppCompatActivity {
     private FirebaseUser mUser;
     private CircularImageView profilePicture;
     private ImageView addContentBtn;
+    private ImageButton talksBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,7 @@ public class DefaultActivity extends AppCompatActivity {
 
         profilePicture = findViewById(R.id.profilePciture);
         addContentBtn = findViewById(R.id.addContentBtn);
+        talksBtn = findViewById(R.id.talksBtn);
 
         profilePicture.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,6 +89,14 @@ public class DefaultActivity extends AppCompatActivity {
                         // go to add Story Activity
                     }
                 });
+            }
+        });
+
+        talksBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent to_talks_activity = new Intent(DefaultActivity.this, TalksActivity.class);
+                startActivity(to_talks_activity);
             }
         });
     }
