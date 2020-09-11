@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <RelativeLayout
+        android:id="@+id/fileSelector"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_semibold"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:text="File selector"
+            android:id="@+id/fileDescription"
+            android:layout_margin="20dp"/>
+
+        <ImageView
+            android:id="@+id/file"
+            android:layout_below="@id/fileDescription"
+            android:layout_width="1080px"
+            android:layout_height="1080px"
+            android:background="#fafafa"
+            android:maxHeight="1350px"
+            android:scaleType="centerCrop"/>
+
+        <TextView
+            android:id="@+id/fileTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/file"
+            android:layout_alignTop="@+id/file"
+            android:layout_alignRight="@+id/file"
+            android:layout_alignBottom="@+id/file"
+            android:layout_margin="1dp"
+            android:gravity="center"
+            android:fontFamily="@font/roboto"
+            android:textSize="16sp"
+            android:text="Click to select a file"
+            android:textColor="#2F89FC" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layoutSelector"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fileSelector">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_semibold"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:text="Layout"
+            android:id="@+id/layoutDescription"
+            android:layout_margin="20dp"/>
+
+        <LinearLayout
+            android:id="@+id/layoutSelectorButtons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            android:layout_below="@id/layoutDescription"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp">
+
+            <Button
+                android:id="@+id/firstBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:background="@drawable/layout_button_border"
+                android:text="1:1"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/roboto"
+                style="?android:attr/borderlessButtonStyle" />
+
+            <Button
+                android:id="@+id/secondBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:background="#fafafa"
+                android:text="16:9"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/roboto"
+                style="?android:attr/borderlessButtonStyle" />
+
+            <Button
+                android:id="@+id/thirdBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:background="#fafafa"
+                android:text="3:4"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/roboto"
+                style="?android:attr/borderlessButtonStyle" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

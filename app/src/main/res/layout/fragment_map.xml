@@ -5,24 +5,68 @@
     xmlns:mapbox="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.cardview.widget.CardView
+    <LinearLayout
+        android:id="@+id/searchBar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@android:color/white"
-        app:cardCornerRadius="0dp"
-        app:cardElevation="5dp"
-        android:layout_weight="1"
-        mapbox:cardBackgroundColor="#ffffff">
+        android:layout_height="45dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/round_edittext_dark"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
 
-        <com.mapbox.mapboxsdk.maps.MapView
-            android:id="@+id/map"
+        <ImageButton
+            android:id="@+id/searchIcon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:scaleType="fitXY"
+            android:layout_gravity="center_vertical"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_search"
+            android:tint="@android:color/darker_gray"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="5dp"/>
+
+        <EditText
+            android:id="@+id/search"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            mapbox:mapbox_cameraTargetLat="34.0522"
-            mapbox:mapbox_cameraTargetLng="-118.2436"
-            mapbox:mapbox_cameraZoom="9" />
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Search"
+            android:textColorHint="@android:color/darker_gray"
+            android:fontFamily="@font/roboto"
+            android:textColor="@android:color/darker_gray"
+            android:layout_marginRight="20dp"
+            android:textSize="16sp"
+            android:background="@null"/>
 
-    </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="5dp"
+            android:layout_weight="1"
+            mapbox:cardBackgroundColor="#ffffff"
+            android:layout_below="@id/searchBar">
+
+            <com.mapbox.mapboxsdk.maps.MapView
+                android:id="@+id/map"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                mapbox:mapbox_cameraTargetLat="34.0522"
+                mapbox:mapbox_cameraTargetLng="-118.2436"
+                mapbox:mapbox_cameraZoom="9" />
+
+        </androidx.cardview.widget.CardView>
+
+
+
 
     <!--
         <LinearLayout

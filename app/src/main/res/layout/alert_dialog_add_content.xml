@@ -8,14 +8,14 @@
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/oxygen"
-        android:text="Add Content"
-        android:textSize="22sp"
-        android:textAlignment="center"
-        android:layout_marginTop="25dp"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="10dp"
-        android:textColor="@android:color/black"/>
+        android:fontFamily="@font/roboto_bold"
+        android:text="Add Content"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="22sp" />
 
     <LinearLayout
         android:layout_below="@id/header"
@@ -29,41 +29,42 @@
 
         <Button
             android:id="@+id/imageBtn"
+            style="?attr/borderlessButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="IMAGE"
-            android:fontFamily="@font/oxygen"
-            android:padding="5dp"
-            android:background="@android:color/transparent"
-            android:textColor="#777"
             android:layout_weight="1"
+            android:background="@android:color/transparent"
             android:backgroundTint="@null"
-            style="?attr/borderlessButtonStyle"/>
+            android:fontFamily="@font/roboto"
+            android:padding="5dp"
+            android:text="IMAGE"
+            android:textColor="#777" />
 
         <Button
             android:id="@+id/videoBtn"
+            style="?attr/borderlessButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="VIDEO"
-            android:fontFamily="@font/oxygen"
-            android:padding="5dp"
-            android:background="@android:color/transparent"
-            android:textColor="#777"
             android:layout_weight="1"
+            android:background="@android:color/transparent"
             android:backgroundTint="@null"
-            style="?attr/borderlessButtonStyle"/>
+            android:fontFamily="@font/roboto"
+            android:padding="5dp"
+            android:text="VIDEO"
+            android:textColor="#777" />
+
         <Button
             android:id="@+id/storyBtn"
+            style="?attr/borderlessButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="STORY"
-            android:fontFamily="@font/oxygen"
-            android:padding="5dp"
-            android:background="@android:color/transparent"
-            android:textColor="#777"
             android:layout_weight="1"
+            android:background="@android:color/transparent"
             android:backgroundTint="@null"
-            style="?attr/borderlessButtonStyle"/>
+            android:fontFamily="@font/roboto"
+            android:padding="5dp"
+            android:text="STORY"
+            android:textColor="#777" />
 
     </LinearLayout>
 

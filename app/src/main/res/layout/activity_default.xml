@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp">
+        android:layout_marginBottom="5dp">
 
         <TextView
             android:id="@+id/profileName"
@@ -22,8 +22,7 @@
             android:fontFamily="@font/poppins_bold"
             android:text="Mapick"
             android:textColor="@android:color/black"
-            android:textSize="24sp"
-            android:layout_centerVertical="true" />
+            android:textSize="24sp" />
 
         <ImageButton
             android:id="@+id/talksBtn"
@@ -144,11 +143,11 @@
 
             <com.mikhaellopez.circularimageview.CircularImageView
                 android:id="@+id/profilePciture"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:src="@drawable/ic_profile"
                 android:tint="#ffffff"
-                app:civ_circle_color="#777777"/>
+                app:civ_circle_color="#777777" />
 
         </LinearLayout>
 

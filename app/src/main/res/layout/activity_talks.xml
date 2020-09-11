@@ -29,10 +29,10 @@
             android:id="@+id/header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/raleway_bold"
-            android:text="Talks"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Talks"
             android:textColor="@android:color/black"
             android:textSize="24sp" />
 
@@ -40,11 +40,11 @@
             android:id="@+id/profileName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/raleway"
-            android:text="Ventsislav Dimitrov"
-            android:layout_centerHorizontal="true"
-            android:textColor="#777777"
             android:layout_below="@id/header"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/roboto"
+            android:text="Ventsislav Dimitrov"
+            android:textColor="#777777"
             android:textSize="14sp" />
 
         <ImageButton
@@ -69,11 +69,13 @@
         android:layout_below="@id/toolbar"
         android:layout_marginBottom="5dp"/>
 
-    <include
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/talksList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        layout="@layout/talks_item"
-        android:layout_below="@id/divider"/>
+        android:layout_below="@id/divider">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 
     <!--
