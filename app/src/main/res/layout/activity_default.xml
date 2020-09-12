@@ -65,7 +65,7 @@
         android:background="@android:color/white">
 
         <LinearLayout
-            android:id="@+id/discoverBtn"
+            android:id="@+id/mapLayout"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -73,6 +73,7 @@
             android:gravity="center">
 
             <ImageView
+                android:id="@+id/mapBtn"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/ic_map"
@@ -82,7 +83,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/feedBtn"
+            android:id="@+id/feedLayout"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -90,6 +91,7 @@
             android:gravity="center">
 
             <ImageView
+                android:id="@+id/feedBtn"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/ic_feed"
@@ -99,7 +101,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/mapBtn"
+            android:id="@+id/addContentLayout"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -117,7 +119,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/activityBtn"
+            android:id="@+id/activityLayout"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -125,6 +127,7 @@
             android:gravity="center">
 
             <ImageView
+                android:id="@+id/activityBtn"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/ic_activity"

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:mapbox="http://schemas.android.com/tools"
+    android:background="@android:color/white">
+
+    <RelativeLayout
+        android:id="@+id/descriptionSelector"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_semibold"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:text="Description"
+            android:id="@+id/fileDescription"
+            android:layout_margin="20dp"/>
+
+        <RelativeLayout
+            android:id="@+id/descriptionContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fileDescription">
+            
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/descriptionProfilePicture"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_profile"
+                android:tint="#ffffff"
+                app:civ_circle_color="#777777"
+                android:layout_marginStart="20dp" />
+            
+            <EditText
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/descriptionProfilePicture"
+                android:layout_marginStart="5dp"
+                android:hint="Type what's on your mind..."
+                android:textColor="@android:color/black"
+                android:textColorHint="@android:color/black"
+                android:inputType="text|textMultiLine"
+                android:fontFamily="@font/roboto"
+                android:textSize="16sp"
+                android:singleLine="false"
+                android:cursorVisible="true"
+                android:textCursorDrawable="@android:color/black"/>
+            
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/hashtagsSelector"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/descriptionSelector">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_semibold"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:text="Hashtags"
+            android:id="@+id/hashtagsTextView"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway"
+            android:textColor="#777"
+            android:textSize="14sp"
+            android:layout_marginStart="20dp"
+            android:text="We may select a few hashtags based on your photo"
+            android:id="@+id/hashtagsDescription"
+            android:layout_below="@id/hashtagsTextView"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/shareSelector"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/hashtagsSelector">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_semibold"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:text="Share with friends"
+            android:id="@+id/shareTextView"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway"
+            android:textColor="#777"
+            android:textSize="14sp"
+            android:layout_marginStart="20dp"
+            android:text="Select friends you would like to share the post with. It will appear on their wall too."
+            android:id="@+id/shareDescription"
+            android:layout_below="@id/shareTextView"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
