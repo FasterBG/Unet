@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Layout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -35,8 +34,10 @@ public class DefaultActivity extends AppCompatActivity implements OnMapReadyCall
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
     private CircularImageView profilePicture;
-    private ImageView addContentBtn, mapBtn, feedBtn, activityBtn;
+    private ImageView addContentBtn;
     private ImageButton talksBtn;
+
+    private MapboxMap mapboxMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,16 +51,13 @@ public class DefaultActivity extends AppCompatActivity implements OnMapReadyCall
 
         profilePicture = findViewById(R.id.profilePciture);
         addContentBtn = findViewById(R.id.addContentBtn);
-        mapBtn = findViewById(R.id.mapBtn);
-        feedBtn = findViewById(R.id.feedBtn);
-        activityBtn = findViewById(R.id.activityBtn);
         talksBtn = findViewById(R.id.talksBtn);
 
-        final DatabaseReference profilePictureReference = FirebaseDatabase.getInstance().getReference("users").child(mAuth.getCurrentUser().getUid()).child("profilePictureUrl");
+        final DatabaseReference profilePictureReference = FirebaseDatabase.getInstance().getReference("users").child(mAuth.getCurrentUser().getUid());
         profilePictureReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.hasChild("profilePictureUrl")){
+                if(snapshot.hasChild("profilePictureUrl")) {
                     Picasso.get().load(snapshot.getValue().toString()).into(profilePicture);
                 }
             }
@@ -74,6 +72,7 @@ public class DefaultActivity extends AppCompatActivity implements OnMapReadyCall
             @Override
             public void onClick(View view) {
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new FragmentProfile()).commit();
+
             }
         });
 
@@ -93,7 +92,6 @@ public class DefaultActivity extends AppCompatActivity implements OnMapReadyCall
                 imageBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        dialog.dismiss();
                         Intent toAddPostActivity = new Intent(DefaultActivity.this, AddPostActivity.class);
                         toAddPostActivity.putExtra("contentType", "image");
                         startActivity(toAddPostActivity);
@@ -103,7 +101,6 @@ public class DefaultActivity extends AppCompatActivity implements OnMapReadyCall
                 videoBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        dialog.dismiss();
                         Intent toAddPostActivity = new Intent(DefaultActivity.this, AddPostActivity.class);
                         toAddPostActivity.putExtra("contentType", "video");
                         startActivity(toAddPostActivity);
@@ -113,7 +110,9 @@ public class DefaultActivity extends AppCompatActivity implements OnMapReadyCall
                 storyBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        // go to add Story Activity
+                        Intent toAddStoryActivity = new Intent(DefaultActivity.this, AddStoryActivity.class);
+                        toAddStoryActivity.putExtra("contentType", "story");
+                        startActivity(toAddStoryActivity);
                     }
                 });
             }
@@ -137,5 +136,6 @@ public class DefaultActivity extends AppCompatActivity implements OnMapReadyCall
 
             }
         });
+
     }
 }
