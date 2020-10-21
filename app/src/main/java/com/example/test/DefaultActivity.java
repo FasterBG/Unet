@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Layout;
@@ -15,6 +16,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -22,16 +24,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.mapbox.mapboxsdk.maps.MapboxMap;
-import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
-import com.mapbox.mapboxsdk.maps.Style;
+
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.squareup.picasso.Picasso;
 
-public class DefaultActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class DefaultActivity extends AppCompatActivity {
 
     private Button logout;
-
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
     private CircularImageView profilePicture;
@@ -70,10 +69,25 @@ public class DefaultActivity extends AppCompatActivity implements OnMapReadyCall
             }
         });
 
+        mapBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new FragmentMap()).commit();
+                mapBtn.setColorFilter(Color.parseColor("#262626"));
+                profilePicture.setCircleColor(Color.parseColor("#777777"));
+                feedBtn.setColorFilter(Color.parseColor("#777777"));
+                activityBtn.setColorFilter(Color.parseColor("#777777"));
+            }
+        });
+
         profilePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new FragmentProfile()).commit();
+                profilePicture.setCircleColor(Color.parseColor("#262626"));
+                mapBtn.setColorFilter(Color.parseColor("#777777"));
+                feedBtn.setColorFilter(Color.parseColor("#777777"));
+                activityBtn.setColorFilter(Color.parseColor("#777777"));
             }
         });
 
@@ -124,17 +138,6 @@ public class DefaultActivity extends AppCompatActivity implements OnMapReadyCall
             public void onClick(View view) {
                 Intent to_talks_activity = new Intent(DefaultActivity.this, TalksActivity.class);
                 startActivity(to_talks_activity);
-            }
-        });
-    }
-
-    @Override
-    public void onMapReady(@NonNull MapboxMap mapboxMap) {
-        mapboxMap = mapboxMap;
-        mapboxMap.setStyle(new Style.Builder().fromUri("mapbox://styles/vents04/ckafl3aeg1ldx1irplfokb1uw"), new Style.OnStyleLoaded() {
-            @Override
-            public void onStyleLoaded(@NonNull Style style) {
-
             }
         });
     }
