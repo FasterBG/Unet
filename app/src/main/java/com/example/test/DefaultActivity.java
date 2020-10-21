@@ -72,7 +72,6 @@ public class DefaultActivity extends AppCompatActivity implements OnMapReadyCall
             @Override
             public void onClick(View view) {
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new FragmentProfile()).commit();
-
             }
         });
 

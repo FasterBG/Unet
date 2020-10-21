@@ -13,9 +13,11 @@ import android.net.Uri;
 import android.os.Debug;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.util.Size;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+import android.view.ViewDebug;
 import android.webkit.MimeTypeMap;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -43,10 +45,14 @@ import org.jetbrains.annotations.NotNull;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.net.URI;
+import java.security.Policy;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 
 public class AddStoryActivity extends AppCompatActivity implements SurfaceHolder.Callback {
+
+    public static final int PICKFILE_RESULT_CODE = 1;
 
     private Uri mImageUri;
     String myUrl = "";
@@ -57,6 +63,8 @@ public class AddStoryActivity extends AppCompatActivity implements SurfaceHolder
     private SurfaceHolder surfaceHolder;
     private SurfaceView mSurfaceView;
     private ImageButton mShootButton;
+    private ImageButton mStorageButton;
+    private String contentType;
     private FirebaseDatabase database;
 
     private int CAMERA_REQUEST_CODE = 200;
@@ -68,6 +76,10 @@ public class AddStoryActivity extends AppCompatActivity implements SurfaceHolder
 
         mSurfaceView = findViewById(R.id.surfaceView);
         mShootButton = findViewById(R.id.shootBtn);
+        mStorageButton = findViewById(R.id.storageBtn);
+
+        contentType = getIntent().getStringExtra("contentType");
+
 
         if (ContextCompat.checkSelfPermission(AddStoryActivity.this, Manifest.permission.CAMERA)
                 == PackageManager.PERMISSION_DENIED){
@@ -78,6 +90,16 @@ public class AddStoryActivity extends AppCompatActivity implements SurfaceHolder
         surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
 
         storageReference = FirebaseStorage.getInstance().getReference("story");
+
+        mStorageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent chooseFile = new Intent(Intent.ACTION_GET_CONTENT);
+                chooseFile.setType("image/*");
+                chooseFile = Intent.createChooser(chooseFile, "Choose a file");
+                startActivityForResult(chooseFile, PICKFILE_RESULT_CODE);
+            }
+        });
 
         mShootButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,14 +123,14 @@ public class AddStoryActivity extends AppCompatActivity implements SurfaceHolder
 
     public Uri getImageUri(Context inContext, Bitmap inImage) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        inImage.compress(Bitmap.CompressFormat.PNG, 100, bytes);
         String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
         return Uri.parse(path);
     }
 
     private byte[] storePhoto(Bitmap cbmp, String pathFileName){
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        cbmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        cbmp.compress(Bitmap.CompressFormat.PNG, 100, baos);
         byte[] data = baos.toByteArray();
         return data;
     }
@@ -195,8 +217,10 @@ public class AddStoryActivity extends AppCompatActivity implements SurfaceHolder
 
         Camera.Parameters parameters;
         parameters = camera.getParameters();
+        List<Camera.Size> sizes =  parameters.getSupportedPictureSizes();
+        Camera.Size size = sizes.get(0);
+        parameters.setPictureSize(size.width, size.height);
         parameters.setPreviewFrameRate(20);
-        parameters.setPictureSize(352, 288);
         camera.setParameters(parameters);
         camera.setDisplayOrientation(90);
         try{
@@ -217,5 +241,15 @@ public class AddStoryActivity extends AppCompatActivity implements SurfaceHolder
         camera.stopPreview();
         camera.release();
         camera = null;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
+        switch (requestCode){
+            case PICKFILE_RESULT_CODE:
+                if (resultCode == -1){
+
+                }
+        }
     }
 }
