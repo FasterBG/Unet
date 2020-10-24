@@ -5,17 +5,17 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Layout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -29,11 +29,10 @@ import com.squareup.picasso.Picasso;
 public class DefaultActivity extends AppCompatActivity {
 
     private Button logout;
-
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
     private CircularImageView profilePicture;
-    private ImageView addContentBtn;
+    private ImageView addContentBtn, mapBtn, feedBtn, activityBtn;
     private ImageButton talksBtn;
 
     @Override
@@ -48,13 +47,16 @@ public class DefaultActivity extends AppCompatActivity {
 
         profilePicture = findViewById(R.id.profilePciture);
         addContentBtn = findViewById(R.id.addContentBtn);
+        mapBtn = findViewById(R.id.mapBtn);
+        feedBtn = findViewById(R.id.feedBtn);
+        activityBtn = findViewById(R.id.activityBtn);
         talksBtn = findViewById(R.id.talksBtn);
 
-        final DatabaseReference profilePictureReference = FirebaseDatabase.getInstance().getReference("users").child(mAuth.getCurrentUser().getUid());
+        final DatabaseReference profilePictureReference = FirebaseDatabase.getInstance().getReference("users").child(mAuth.getCurrentUser().getUid()).child("profilePictureUrl");
         profilePictureReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.hasChild("profilePictureUrl")) {
+                if(snapshot.hasChild("profilePictureUrl")){
                     Picasso.get().load(snapshot.getValue().toString()).into(profilePicture);
                 }
             }
@@ -65,10 +67,25 @@ public class DefaultActivity extends AppCompatActivity {
             }
         });
 
+        mapBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new FragmentMap()).commit();
+                mapBtn.setColorFilter(Color.parseColor("#262626"));
+                profilePicture.setCircleColor(Color.parseColor("#777777"));
+                feedBtn.setColorFilter(Color.parseColor("#777777"));
+                activityBtn.setColorFilter(Color.parseColor("#777777"));
+            }
+        });
+
         profilePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new FragmentProfile()).commit();
+                profilePicture.setCircleColor(Color.parseColor("#262626"));
+                mapBtn.setColorFilter(Color.parseColor("#777777"));
+                feedBtn.setColorFilter(Color.parseColor("#777777"));
+                activityBtn.setColorFilter(Color.parseColor("#777777"));
             }
         });
 
@@ -88,6 +105,7 @@ public class DefaultActivity extends AppCompatActivity {
                 imageBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        dialog.dismiss();
                         Intent toAddPostActivity = new Intent(DefaultActivity.this, AddPostActivity.class);
                         toAddPostActivity.putExtra("contentType", "image");
                         startActivity(toAddPostActivity);
@@ -97,6 +115,7 @@ public class DefaultActivity extends AppCompatActivity {
                 videoBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        dialog.dismiss();
                         Intent toAddPostActivity = new Intent(DefaultActivity.this, AddPostActivity.class);
                         toAddPostActivity.putExtra("contentType", "video");
                         startActivity(toAddPostActivity);
@@ -106,9 +125,7 @@ public class DefaultActivity extends AppCompatActivity {
                 storyBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent toAddStoryActivity = new Intent(DefaultActivity.this, AddStoryActivity.class);
-                        toAddStoryActivity.putExtra("contentType", "story");
-                        startActivity(toAddStoryActivity);
+                        // go to add Story Activity
                     }
                 });
             }
@@ -122,5 +139,4 @@ public class DefaultActivity extends AppCompatActivity {
             }
         });
     }
-
 }
