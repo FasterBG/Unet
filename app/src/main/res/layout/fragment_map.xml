@@ -55,13 +55,11 @@
             mapbox:cardBackgroundColor="#ffffff"
             android:layout_below="@id/searchBar">
 
-            <com.mapbox.mapboxsdk.maps.MapView
-                android:id="@+id/map"
+            <fragment
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                mapbox:mapbox_cameraTargetLat="34.0522"
-                mapbox:mapbox_cameraTargetLng="-118.2436"
-                mapbox:mapbox_cameraZoom="9" />
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment" />
 
         </androidx.cardview.widget.CardView>
 

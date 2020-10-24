@@ -20,7 +20,7 @@ public class FragmentProfile extends androidx.fragment.app.Fragment {
 
     private FirebaseAuth mAuth;
     private View fragmentView;
-    private CircularImageView profilePicture;
+    private CircularImageView profilePicture, profilePictureIcon;
 
     public FragmentProfile(){
 
@@ -34,6 +34,7 @@ public class FragmentProfile extends androidx.fragment.app.Fragment {
         mAuth = FirebaseAuth.getInstance();
 
         profilePicture = fragmentView.findViewById(R.id.profilePicture);
+        profilePictureIcon = fragmentView.findViewById(R.id.profilePictureIcon);
 
         final DatabaseReference profilePictureReference = FirebaseDatabase.getInstance().getReference("users").child(mAuth.getCurrentUser().getUid());
         profilePictureReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -41,6 +42,7 @@ public class FragmentProfile extends androidx.fragment.app.Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.hasChild("profilePictureUrl")){
                     Picasso.get().load(snapshot.child("profilePictureUrl").getValue().toString()).into(profilePicture);
+                    Picasso.get().load(snapshot.child("profilePictureUrl").getValue().toString()).into(profilePictureIcon);
                 }
             }
 

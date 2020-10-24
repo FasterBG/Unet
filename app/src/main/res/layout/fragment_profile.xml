@@ -155,5 +155,21 @@
         android:background="#fafafa"
         android:layout_below="@id/actionButtons"
         android:layout_marginBottom="40dp"/>
+    
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/divider2">
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/profilePictureIcon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_profile"
+            android:tint="#ffffff"
+            app:civ_border_color="#2F89FC"
+            app:civ_circle_color="#efefef" />
+        
+    </RelativeLayout>
 
 </RelativeLayout>
