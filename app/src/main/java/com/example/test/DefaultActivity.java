@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -21,13 +23,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.mapbox.mapboxsdk.maps.MapboxMap;
-import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
-import com.mapbox.mapboxsdk.maps.Style;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.squareup.picasso.Picasso;
 
-public class DefaultActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class DefaultActivity extends AppCompatActivity {
 
     private Button logout;
 
@@ -36,8 +35,6 @@ public class DefaultActivity extends AppCompatActivity implements OnMapReadyCall
     private CircularImageView profilePicture;
     private ImageView addContentBtn;
     private ImageButton talksBtn;
-
-    private MapboxMap mapboxMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,15 +123,4 @@ public class DefaultActivity extends AppCompatActivity implements OnMapReadyCall
         });
     }
 
-    @Override
-    public void onMapReady(@NonNull MapboxMap mapboxMap) {
-        mapboxMap = mapboxMap;
-        mapboxMap.setStyle(new Style.Builder().fromUri("mapbox://styles/vents04/ckafl3aeg1ldx1irplfokb1uw"), new Style.OnStyleLoaded() {
-            @Override
-            public void onStyleLoaded(@NonNull Style style) {
-
-            }
-        });
-
-    }
 }
